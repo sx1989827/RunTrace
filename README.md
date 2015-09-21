@@ -13,3 +13,10 @@
 ###获取view的基本信息
 将圆形按钮拖到你想获取信息的view上即可
 
+![](https://github.com/sx1989827/RunTrace/raw/master/Resource/1.gif)
+
+###获取view的父视图和子视图
+
+将圆形按钮拖到你想获取信息的view上，点击顶部的信息窗口
+
+![](https://github.com/sx1989827/RunTrace/raw/master/Resource/2.gif)

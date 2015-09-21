@@ -14,6 +14,8 @@
 		B51BA1C11BABA42D007F83A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B51BA1C01BABA42D007F83A4 /* Images.xcassets */; };
 		B51BA1C41BABA42D007F83A4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51BA1C21BABA42D007F83A4 /* LaunchScreen.xib */; };
 		B51BA1D01BABA42D007F83A4 /* RunTraceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B51BA1CF1BABA42D007F83A4 /* RunTraceTests.m */; };
+		B562D3721BB007F200FA4061 /* libRunTraceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B562D3711BB007F200FA4061 /* libRunTraceLib.a */; };
+		B562D3741BB0094200FA4061 /* RunTraceHelp.xib in Resources */ = {isa = PBXBuildFile; fileRef = B562D3731BB0094200FA4061 /* RunTraceHelp.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		B51BA1C91BABA42D007F83A4 /* RunTraceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunTraceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51BA1CE1BABA42D007F83A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B51BA1CF1BABA42D007F83A4 /* RunTraceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTraceTests.m; sourceTree = "<group>"; };
+		B51BA1DA1BABA49A007F83A4 /* RunTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunTrace.h; sourceTree = "<group>"; };
+		B562D3711BB007F200FA4061 /* libRunTraceLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libRunTraceLib.a; sourceTree = "<group>"; };
+		B562D3731BB0094200FA4061 /* RunTraceHelp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunTraceHelp.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B562D3721BB007F200FA4061 /* libRunTraceLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +87,7 @@
 		B51BA1B21BABA42D007F83A4 /* RunTrace */ = {
 			isa = PBXGroup;
 			children = (
+				B51BA1D91BABA446007F83A4 /* RunTrace */,
 				B51BA1B71BABA42D007F83A4 /* AppDelegate.h */,
 				B51BA1B81BABA42D007F83A4 /* AppDelegate.m */,
 				B51BA1BA1BABA42D007F83A4 /* ViewController.h */,
@@ -117,6 +124,16 @@
 				B51BA1CE1BABA42D007F83A4 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B51BA1D91BABA446007F83A4 /* RunTrace */ = {
+			isa = PBXGroup;
+			children = (
+				B562D3731BB0094200FA4061 /* RunTraceHelp.xib */,
+				B51BA1DA1BABA49A007F83A4 /* RunTrace.h */,
+				B562D3711BB007F200FA4061 /* libRunTraceLib.a */,
+			);
+			path = RunTrace;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +218,7 @@
 			files = (
 				B51BA1BF1BABA42D007F83A4 /* Main.storyboard in Resources */,
 				B51BA1C41BABA42D007F83A4 /* LaunchScreen.xib in Resources */,
+				B562D3741BB0094200FA4061 /* RunTraceHelp.xib in Resources */,
 				B51BA1C11BABA42D007F83A4 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -349,6 +367,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RunTrace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RunTrace/RunTrace",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -359,6 +382,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = RunTrace/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RunTrace/RunTrace",
+				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -416,6 +444,7 @@
 				B51BA1D51BABA42D007F83A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B51BA1D61BABA42D007F83A4 /* Build configuration list for PBXNativeTarget "RunTraceTests" */ = {
 			isa = XCConfigurationList;
@@ -424,6 +453,7 @@
 				B51BA1D81BABA42D007F83A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

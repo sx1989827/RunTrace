@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIView *viewTest;
+- (IBAction)onAdd:(id)sender;
 
 
 @end

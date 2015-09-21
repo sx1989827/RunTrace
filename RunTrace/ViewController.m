@@ -24,4 +24,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onAdd:(id)sender
+{
+    UILabel *lb=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    lb.text=@"123";
+    [_viewTest addSubview:lb];
+}
 @end
+
+
+
+
+
+
+

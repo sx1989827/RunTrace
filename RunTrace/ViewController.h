@@ -11,6 +11,8 @@
 @interface ViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIView *viewTest;
 - (IBAction)onAdd:(id)sender;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *conTop;
+- (IBAction)onNext:(id)sender;
 
 
 @end

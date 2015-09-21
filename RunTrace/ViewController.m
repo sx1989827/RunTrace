@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "NextViewController.h"
 @interface ViewController ()
 
 @end
@@ -29,6 +29,15 @@
     UILabel *lb=[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
     lb.text=@"123";
     [_viewTest addSubview:lb];
+    _conTop.constant-=100;
+    [UIView animateWithDuration:1 animations:^{
+        [self.view layoutIfNeeded];
+    }];
+}
+- (IBAction)onNext:(id)sender
+{
+    NextViewController *vc=[[NextViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
 

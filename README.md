@@ -11,12 +11,13 @@
 
 ##使用
 ###获取view的基本信息
-将圆形按钮拖到你想获取信息的view上即可
+将圆形按钮拖到你想获取信息的view上即可,它可以获取你想要的任何view，无论是tabitem上的，还是navigationitem上，甚至uiwindow上的，你都可以获取到。
 
 ![](https://github.com/sx1989827/RunTrace/raw/master/Resource/1.gif)
 
 ###获取view的父视图和子视图
 
-将圆形按钮拖到你想获取信息的view上，点击顶部的信息窗口
+想看看这个view的父视图或者子视图有哪些，将圆形按钮拖到你想获取信息的view上，点击顶部的信息栏，便会弹出一个窗口，这个窗口上列举出了这个view的父视图（按照以此往上的顺序）和子视图（按照由内向外的顺序），还有当前的视图是否是自动布局，以及信息栏是置顶显示还是置底显示，最后还有一个支持按钮，感觉不错可以赞助一下：）
 
 ![](https://github.com/sx1989827/RunTrace/raw/master/Resource/2.gif)
+

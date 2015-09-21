@@ -25,14 +25,19 @@
 
 获取你想要的view，在弹出窗口里，如果该view是自动布局，便会有detail按钮，点击按钮，显示自动布局列表，点击列表，相应的约束在页面上高亮显示，同理在view的父视图和子视图列表，你同样可以点击列表显示该视图的自动布局，是不是爽歪歪啊~
 
+![](https://github.com/sx1989827/RunTrace/raw/master/Resource/3.gif)
 
 ###追踪view的状态
 
 很多时候，我们实时跟踪一个view的状态和属性，比如它的frame的变化，它的center的变化，它的superview的改变，它的subview的改变，它的contentSize的改变等等变化，现在一个按钮即可实现你想要的。点击弹出窗口上的Trace按钮，即可追踪该view的状态，view的更新信息全部都在log列表里，当你点击stop的时候，便回到了原先的弹出窗口。同理在view的父视图和子视图列表，你左划列表，点击Trace按钮，同样可以实现对父视图和子视图的追踪。
 
+![](https://github.com/sx1989827/RunTrace/raw/master/Resource/4.gif)
+
 ###监测内存泄露
 
 没有听错吧，它可以监测内存泄露，是的，那么如何来做呢，你push进一个viewController的时候，随便追踪一个view的状态，然后pop回来，如果内存正常会弹出RemoveFromSuperview的提示框，如果没有弹出，说明那个viewController发生了内存泄露。
+
+![](https://github.com/sx1989827/RunTrace/raw/master/Resource/5.gif)
 
 ##原理
 说完了大致运用，我们来简单说说原理，原理就是首先Method Swizzling修改很多方法的入口，加入我们想要的东西，比如那个圆形小按钮，然后通过view的hittest来获取我们想要的view，对view的相关属性kvo便可以跟踪它的一些状态啦。其实原理并不难，但是细节很麻烦，尤其是在写自动布局约束展现的时候需要判断的东西很多。另外大家在使用的时候可以放心，对于app原生界面上的view我都使用了weak引用，不会影响到你的代码。

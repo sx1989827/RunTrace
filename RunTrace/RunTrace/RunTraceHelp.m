@@ -300,7 +300,7 @@ NSString *msgRunTraceInfoPosition=@"msgRunTraceInfoPosition";
         cell.textLabel.numberOfLines=0;
         cell.textLabel.lineBreakMode=NSLineBreakByCharWrapping;
         cell.textLabel.frame=CGRectMake(0, 0, tableView.frame.size.width, 40);
-        cell.textLabel.text=[NSString stringWithFormat:@"%@(Priority:%ld)" ,dic[@"Type"],[dic[@"Priority"] integerValue]];
+        cell.textLabel.text=[NSString stringWithFormat:@"%@(Priority:%ld)" ,dic[@"Type"],(long)[dic[@"Priority"] integerValue]];
         [cell.textLabel sizeToFit];
         cell.detailTextLabel.numberOfLines=0;
         cell.detailTextLabel.lineBreakMode=NSLineBreakByCharWrapping;
@@ -324,13 +324,13 @@ NSString *msgRunTraceInfoPosition=@"msgRunTraceInfoPosition";
     cell.detailTextLabel.text=[NSString stringWithFormat:@"l:%0.1lf t:%0.1lf w:%0.1lf h:%0.1lf",view.frame.origin.x,view.frame.origin.y,view.frame.size.width,view.frame.size.height];
     if([view isKindOfClass:[UILabel class]] || [view isKindOfClass:[UITextField class]] || [view isKindOfClass:[UITextView class]])
     {
-        cell.detailTextLabel.text=[cell.detailTextLabel.text stringByAppendingString:[NSString stringWithFormat:@" text(%ld):%@",[[view valueForKey:@"text"] length],[view valueForKey:@"text"]]];
+        cell.detailTextLabel.text=[cell.detailTextLabel.text stringByAppendingString:[NSString stringWithFormat:@" text(%ld):%@",(long)[[view valueForKey:@"text"] length],[view valueForKey:@"text"]]];
     }
     else if([view isKindOfClass:[UIButton class]])
     {
         UIButton *btn=(UIButton*)view;
         NSString *str=[btn titleForState:UIControlStateNormal];
-        cell.detailTextLabel.text=[cell.detailTextLabel.text stringByAppendingString:[NSString stringWithFormat:@" text(%ld):%@",str.length,str!=nil?str:@"" ]];
+        cell.detailTextLabel.text=[cell.detailTextLabel.text stringByAppendingString:[NSString stringWithFormat:@" text(%ld):%@",(long)str.length,str!=nil?str:@"" ]];
     }
     return cell;
 }

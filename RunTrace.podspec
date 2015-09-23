@@ -20,6 +20,5 @@ Pod::Spec.new do |s|
 
   s.source_files = "RunTrace/RunTrace/*.{h,m}"
   s.resources    = "RunTrace/RunTrace/*.xib"
-  s.library      = "RunTrace/RunTrace/libRunTraceLib"
   s.requires_arc = true
 end

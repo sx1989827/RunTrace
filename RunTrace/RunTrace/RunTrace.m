@@ -9,7 +9,6 @@
 #import "RunTrace.h"
 #import <objc/runtime.h>
 #import "RunTraceHelp.h"
-static BOOL bRunTrace=YES;
 @interface RunTrace ()
 {
     BOOL bTouch;

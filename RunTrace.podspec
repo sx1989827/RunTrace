@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.author       = { "sx1989827" => "" }
 
   s.ios.deployment_target = '7.0'
-  s.source       = { :git => "https://github.com/sx1989827/RunTrace.git" }
+  s.source       = { :git => "https://github.com/sx1989827/RunTrace.git", :tag => '1.0'}
 
   s.source_files = "RunTrace/RunTrace/*.{h,m}"
   s.resources    = "RunTrace/RunTrace/*.xib"

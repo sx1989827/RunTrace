@@ -8,15 +8,29 @@
 
 #import "ViewController.h"
 #import "NextViewController.h"
+#include <dlfcn.h>
 @interface ViewController ()
-
+{
+}
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    UILabel *lb=[[UILabel alloc] initWithFrame:CGRectMake(0, 100, 320, 30)];
+    lb.text=@"qqweqw";
+    lb.layer.zPosition=FLT_MAX;
+    lb.userInteractionEnabled=YES;
+    NSLog(@"%@ %@",self.view.window,[UIApplication sharedApplication].keyWindow);
+    [[UIApplication sharedApplication].keyWindow addSubview:lb];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +52,11 @@
 {
     NextViewController *vc=[[NextViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
+
+
 }
+
+
 @end
 
 

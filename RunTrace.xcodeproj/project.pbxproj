@@ -14,8 +14,9 @@
 		B51BA1C11BABA42D007F83A4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B51BA1C01BABA42D007F83A4 /* Images.xcassets */; };
 		B51BA1C41BABA42D007F83A4 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51BA1C21BABA42D007F83A4 /* LaunchScreen.xib */; };
 		B51BA1D01BABA42D007F83A4 /* RunTraceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B51BA1CF1BABA42D007F83A4 /* RunTraceTests.m */; };
-		B562D3721BB007F200FA4061 /* libRunTraceLib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B562D3711BB007F200FA4061 /* libRunTraceLib.a */; };
-		B562D3741BB0094200FA4061 /* RunTraceHelp.xib in Resources */ = {isa = PBXBuildFile; fileRef = B562D3731BB0094200FA4061 /* RunTraceHelp.xib */; };
+		B52ED13C1BB28A0A0058408C /* RunTraceHelp.xib in Resources */ = {isa = PBXBuildFile; fileRef = B52ED13B1BB28A0A0058408C /* RunTraceHelp.xib */; };
+		B52ED1471BB293310058408C /* RunTrace.m in Sources */ = {isa = PBXBuildFile; fileRef = B52ED1441BB293310058408C /* RunTrace.m */; };
+		B52ED1481BB293310058408C /* RunTraceHelp.m in Sources */ = {isa = PBXBuildFile; fileRef = B52ED1461BB293310058408C /* RunTraceHelp.m */; };
 		B562D3781BB052A500FA4061 /* NextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B562D3761BB052A500FA4061 /* NextViewController.m */; };
 		B562D3791BB052A500FA4061 /* NextViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B562D3771BB052A500FA4061 /* NextViewController.xib */; };
 /* End PBXBuildFile section */
@@ -45,8 +46,10 @@
 		B51BA1CE1BABA42D007F83A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B51BA1CF1BABA42D007F83A4 /* RunTraceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RunTraceTests.m; sourceTree = "<group>"; };
 		B51BA1DA1BABA49A007F83A4 /* RunTrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunTrace.h; sourceTree = "<group>"; };
-		B562D3711BB007F200FA4061 /* libRunTraceLib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libRunTraceLib.a; sourceTree = "<group>"; };
-		B562D3731BB0094200FA4061 /* RunTraceHelp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunTraceHelp.xib; sourceTree = "<group>"; };
+		B52ED13B1BB28A0A0058408C /* RunTraceHelp.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RunTraceHelp.xib; sourceTree = "<group>"; };
+		B52ED1441BB293310058408C /* RunTrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunTrace.m; sourceTree = "<group>"; };
+		B52ED1451BB293310058408C /* RunTraceHelp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunTraceHelp.h; sourceTree = "<group>"; };
+		B52ED1461BB293310058408C /* RunTraceHelp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RunTraceHelp.m; sourceTree = "<group>"; };
 		B562D3751BB052A500FA4061 /* NextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NextViewController.h; sourceTree = "<group>"; };
 		B562D3761BB052A500FA4061 /* NextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NextViewController.m; sourceTree = "<group>"; };
 		B562D3771BB052A500FA4061 /* NextViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NextViewController.xib; sourceTree = "<group>"; };
@@ -57,7 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B562D3721BB007F200FA4061 /* libRunTraceLib.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,9 +139,11 @@
 		B51BA1D91BABA446007F83A4 /* RunTrace */ = {
 			isa = PBXGroup;
 			children = (
-				B562D3731BB0094200FA4061 /* RunTraceHelp.xib */,
+				B52ED1441BB293310058408C /* RunTrace.m */,
+				B52ED1451BB293310058408C /* RunTraceHelp.h */,
+				B52ED1461BB293310058408C /* RunTraceHelp.m */,
 				B51BA1DA1BABA49A007F83A4 /* RunTrace.h */,
-				B562D3711BB007F200FA4061 /* libRunTraceLib.a */,
+				B52ED13B1BB28A0A0058408C /* RunTraceHelp.xib */,
 			);
 			path = RunTrace;
 			sourceTree = "<group>";
@@ -226,9 +230,9 @@
 			files = (
 				B51BA1BF1BABA42D007F83A4 /* Main.storyboard in Resources */,
 				B51BA1C41BABA42D007F83A4 /* LaunchScreen.xib in Resources */,
-				B562D3741BB0094200FA4061 /* RunTraceHelp.xib in Resources */,
 				B51BA1C11BABA42D007F83A4 /* Images.xcassets in Resources */,
 				B562D3791BB052A500FA4061 /* NextViewController.xib in Resources */,
+				B52ED13C1BB28A0A0058408C /* RunTraceHelp.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,8 +251,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B51BA1BC1BABA42D007F83A4 /* ViewController.m in Sources */,
+				B52ED1471BB293310058408C /* RunTrace.m in Sources */,
 				B562D3781BB052A500FA4061 /* NextViewController.m in Sources */,
 				B51BA1B91BABA42D007F83A4 /* AppDelegate.m in Sources */,
+				B52ED1481BB293310058408C /* RunTraceHelp.m in Sources */,
 				B51BA1B61BABA42D007F83A4 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

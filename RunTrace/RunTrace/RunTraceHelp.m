@@ -327,7 +327,7 @@ NSString *msgRunTraceInfoPosition=@"msgRunTraceInfoPosition";
         cell.detailTextLabel.text=[cell.detailTextLabel.text stringByAppendingString:[NSString stringWithFormat:@" text(%ld):%@",(long)[[view valueForKey:@"text"] length],[view valueForKey:@"text"]]];
     }
     else if([view isKindOfClass:[UIButton class]])
-    {
+    { 
         UIButton *btn=(UIButton*)view;
         NSString *str=[btn titleForState:UIControlStateNormal];
         cell.detailTextLabel.text=[cell.detailTextLabel.text stringByAppendingString:[NSString stringWithFormat:@" text(%ld):%@",(long)str.length,str!=nil?str:@"" ]];

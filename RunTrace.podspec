@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "RunTrace"
-  s.version      = "1.0"
+  s.version      = “1.1”
   s.summary      = "RunTrace tracks every UI element, including origin, bounds, frame, superview, subview etc."
 
   s.description  = <<-DESC
@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   s.author       = { "sx1989827" => "" }
 
   s.ios.deployment_target = '7.0'
-  s.source       = { :git => "https://github.com/sx1989827/RunTrace.git", :tag => '1.0'}
+  s.source       = { :git => "https://github.com/sx1989827/RunTrace.git", :tag => ‘1.1’}
 
   s.source_files = "RunTrace/RunTrace/*.{h,m}"
   s.resources    = "RunTrace/RunTrace/*.xib"

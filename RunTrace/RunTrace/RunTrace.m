@@ -81,26 +81,28 @@
 }
 @end
 #endif
+
 @implementation RunTrace
 +(void)hookMethod:(Class)cls OriginSelector:(SEL)originalSelector SwizzledSelector:(SEL)swizzledSelector
 {
-        Method originalMethod = class_getInstanceMethod(cls, originalSelector);
-        Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
-        
-        BOOL didAddMethod =
-        class_addMethod(cls,
-                        originalSelector,
-                        method_getImplementation(swizzledMethod),
-                        method_getTypeEncoding(swizzledMethod));
-        
-        if (didAddMethod) {
-            class_replaceMethod(cls,
-                                swizzledSelector,
-                                method_getImplementation(originalMethod),
-                                method_getTypeEncoding(originalMethod));
-        } else {
-            method_exchangeImplementations(originalMethod, swizzledMethod);
-        }
+    
+    Method originalMethod = class_getInstanceMethod(cls, originalSelector);
+    Method swizzledMethod = class_getInstanceMethod(cls, swizzledSelector);
+    
+    BOOL didAddMethod =
+    class_addMethod(cls,
+                    originalSelector,
+                    method_getImplementation(swizzledMethod),
+                    method_getTypeEncoding(swizzledMethod));
+    
+    if (didAddMethod) {
+        class_replaceMethod(cls,
+                            swizzledSelector,
+                            method_getImplementation(originalMethod),
+                            method_getTypeEncoding(originalMethod));
+    } else {
+        method_exchangeImplementations(originalMethod, swizzledMethod);
+    }
 }
 -(instancetype)init
 {
@@ -136,11 +138,11 @@
         lbInfo.userInteractionEnabled=YES;
         [lbInfo addGestureRecognizer:tap];
         [winInfo addSubview:lbInfo];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTraceSuperView:) name:msgRunTraceSuperView object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTraceSubView:) name:msgRunTraceSubView object:nil];
+        [self checkUpdate];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTraceView:) name:msgRunTraceView object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTraceContraints:) name:msgRunTraceContraints object:nil];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTraceInfoPosition:) name:msgRunTraceInfoPosition object:nil];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTraceAddSubView:) name:msgRunTraceAddSubView object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleTraceShow:) name:msgRunTraceShow object:nil];
     }
     return self;
 }
@@ -150,22 +152,41 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+-(void)checkUpdate
+{
+    NSString *urlStr = [NSString stringWithFormat:@"https://api.github.com/repos/sx1989827/RunTrace/tags"];
+    NSString *newStr = [urlStr stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:newStr];
+    NSURLRequest *requst = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:10];
+    [NSURLConnection sendAsynchronousRequest:requst queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+        if(connectionError!=nil)
+        {
+            return;
+        }
+        NSArray *arr = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        version=[arr[0][@"name"] floatValue];
+    }];
+}
+
+-(void)handleTraceShow:(NSNotification*)nofi
+{
+    self.hidden=NO;
+}
+
 -(void)handleTraceAddSubView:(NSNotification*)nofi
 {
     UIView *viewSuper=nofi.object;
     UIView *view=nofi.userInfo[@"subview"];
-    if([viewSuper isKindOfClass:[UIWindow class]] && view!=self && ![view isKindOfClass:[RunTraceHelp class]])
+    if([viewSuper isKindOfClass:[UIWindow class]] && view!=self)
     {
         [viewSuper bringSubviewToFront:self];
+        if(viewTraceHelp!=nil)
+        {
+            [viewSuper bringSubviewToFront:viewTraceHelp];
+        }
     }
 }
 
--(void)handleTraceInfoPosition:(NSNotification*)nofi
-{
-    NSValue *value=nofi.object;
-    CGRect frame=[value CGRectValue];
-    winInfo.frame=frame;
-}
 
 -(void)handleTraceContraints:(NSNotification*)nofi
 {
@@ -250,23 +271,7 @@
     }
 }
 
--(void)handleTraceSuperView:(NSNotification*)nofi
-{
-    UIView *view=nofi.object;
-    [self.window addSubview:viewBound];
-    CGRect p=[self.window convertRect:view.bounds fromView:view];
-    viewBound.frame=p;
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionRepeat|UIViewAnimationOptionAutoreverse animations:^{
-        [UIView setAnimationRepeatCount:2];
-        viewBound.alpha=0;
-    } completion:^(BOOL finished) {
-        [viewBound removeFromSuperview];
-        viewBound.alpha=1;
-    }];
-    
-}
-
--(void)handleTraceSubView:(NSNotification*)nofi
+-(void)handleTraceView:(NSNotification*)nofi
 {
     UIView *view=nofi.object;
     [self.window addSubview:viewBound];
@@ -288,14 +293,12 @@
         return;
     }
     viewTraceHelp=[[[NSBundle mainBundle] loadNibNamed:@"RunTraceHelp" owner:nil options:nil] lastObject];
+    viewTraceHelp.bounds=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width-20, viewTraceHelp.bounds.size.height);
     viewTraceHelp.layer.zPosition=FLT_MAX;
     viewTraceHelp.viewHit=viewTouch;
-    if(winInfo.frame.origin.y>0)
-    {
-        [viewTraceHelp.btnPosition setTitle:@"Bottom" forState:UIControlStateNormal];
-    }
     [self.window addSubview:viewTraceHelp];
     viewTraceHelp.center=self.window.center;
+    self.hidden=YES;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

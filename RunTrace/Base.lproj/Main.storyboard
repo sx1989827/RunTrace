@@ -85,6 +85,7 @@
                     <navigationItem key="navigationItem" id="gBn-pq-Xwz"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
+                        <outlet property="btn" destination="4zW-Yu-ZBW" id="l0M-it-44g"/>
                         <outlet property="conTop" destination="I4m-He-x4M" id="KRR-FR-jOT"/>
                         <outlet property="viewTest" destination="UlE-00-3nf" id="Lid-Oo-u56"/>
                     </connections>
